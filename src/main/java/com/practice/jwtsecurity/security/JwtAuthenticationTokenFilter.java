@@ -1,10 +1,29 @@
 package com.practice.jwtsecurity.security;
 
-import lombok.Data;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 
-@Data
-public class JwtAuthenticationTokenFilter {
-	private AuthenticationManager authenticationManager;
-	private JwtSuccessHandler authenticationSuccessHandler;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessingFilter {
+
+//	private static final String defaultFilterProcessesUrl = "/**";
+
+	// how all the url's are going to be coming
+	public JwtAuthenticationTokenFilter() {
+		super("/**");
+	}
+
+	// Here we authorize & handle authentication request validation
+	// Here we decode the token
+	@Override
+	public Authentication attemptAuthentication(HttpServletRequest request,
+	                                            HttpServletResponse response)
+			throws AuthenticationException, IOException, ServletException {
+		return null;
+	}
 }
