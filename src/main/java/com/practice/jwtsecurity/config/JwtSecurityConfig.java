@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.util.Collections;
 
@@ -47,6 +49,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 	// Http Security Filter configure
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		// initialize http
 		http
 				// csrf token disable
 				.csrf().disable()
@@ -56,6 +59,14 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				// If not authenticated, where to redirect
 				.exceptionHandling().authenticationEntryPoint(exceptionEntryPoint)
+				// how to maintain session [here making stateless]
+				.and()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		// add filter after initializing
+		http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+		// cache control for header
+		http.headers().cacheControl();
+
 	}
 }
 
