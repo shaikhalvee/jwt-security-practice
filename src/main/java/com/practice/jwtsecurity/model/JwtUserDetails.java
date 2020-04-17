@@ -27,7 +27,7 @@ public class JwtUserDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return token;
+		return null;
 	}
 
 	@Override
@@ -57,5 +57,15 @@ public class JwtUserDetails implements UserDetails {
 
 	public Long getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "JwtUserDetails{" +
+				"username='" + username + '\'' +
+				", token='" + token + '\'' +
+				", id=" + id +
+				", authorities=" + authorities +
+				'}';
 	}
 }
