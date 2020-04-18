@@ -19,6 +19,7 @@ public class JwtSuccessHandler implements AuthenticationSuccessHandler {
 	                                    FilterChain chain,
 	                                    Authentication authentication) throws IOException, ServletException {
 		log.debug("Successfully Authentication");
+		chain.doFilter(request, response);
 	}
 
 	@Override

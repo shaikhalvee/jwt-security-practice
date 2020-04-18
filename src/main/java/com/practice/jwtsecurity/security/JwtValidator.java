@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtValidator {
 
-	private static String secretKey = "SHAIKHALVEE";
+	private static final String secretKey = "SHAIKHALVEE";
 
 	public JwtUser validate(String token) {
 
