@@ -13,14 +13,14 @@ import java.io.IOException;
 @Slf4j
 public class JwtSuccessHandler implements AuthenticationSuccessHandler {
 
-	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request,
-	                                    HttpServletResponse response,
-	                                    FilterChain chain,
-	                                    Authentication authentication) throws IOException, ServletException {
-		log.debug("Successfully Authentication");
-		chain.doFilter(request, response);
-	}
+//	@Override
+//	public void onAuthenticationSuccess(HttpServletRequest request,
+//	                                    HttpServletResponse response,
+//	                                    FilterChain chain,
+//	                                    Authentication authentication) throws IOException, ServletException {
+//		log.debug("Successfully Authentication");
+//		chain.doFilter(request, response);
+//	}
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request,

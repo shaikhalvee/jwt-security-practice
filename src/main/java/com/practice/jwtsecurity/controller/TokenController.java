@@ -14,6 +14,12 @@ public class TokenController {
     @Autowired
     private JwtGenerator jwtGenerator;
 
+    /**
+     * user will get jwt token using this "/token" api
+     * for a user providing userInfo
+     * @param jwtUser userInfo
+     * @return jsonWebToken for userInfo
+     */
     @PostMapping
     public String generate(@RequestBody final JwtUser jwtUser) {
         return jwtGenerator.generate(jwtUser);

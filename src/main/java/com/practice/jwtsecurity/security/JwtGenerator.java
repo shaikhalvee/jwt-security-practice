@@ -12,8 +12,8 @@ public class JwtGenerator {
 	private static final String secretKey = "SHAIKHALVEE";
 
 	/**
-	 * @param jwtUser provides user info
-	 * @return json web token by given info
+	 * @param jwtUser provides userInfo
+	 * @return json web token by given userInfo
 	 */
 	public String generate(JwtUser jwtUser) {
 		// creating a claim and set values into it
@@ -23,7 +23,7 @@ public class JwtGenerator {
 		claims.put("role", jwtUser.getRole());
 		return Jwts.builder()
 				.setClaims(claims)
-				.signWith(SignatureAlgorithm.ES512, secretKey)
+				.signWith(SignatureAlgorithm.HS512, secretKey)
 				.compact();
 	}
 }
